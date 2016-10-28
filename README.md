@@ -5,8 +5,8 @@
 
 ####INSTALLATION COMMAND：
 $sudo apt install python  
-$wget https://bootstrap.pypa.io/get-pip.py
-$sudo python get-pip.py
+$wget https://bootstrap.pypa.io/get-pip.py  
+$sudo python get-pip.py  
 $sudo apt install mysql-server  
 DEFAULT PASSWORD FOR root: admin  
 $sudo pip install django==1.4  
