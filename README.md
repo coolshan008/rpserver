@@ -16,7 +16,7 @@ $mysql -u root -p
 mysql> create database raspberry;  
 [Ctrl-d]  
 
-$cd rpserver  
+enter the root of the project  
 $python manage.py syncdb  
 create super account  
 $python manage.py runserver [your ip:port]  
