@@ -19,5 +19,11 @@ mysql> create database raspberry;
 enter the root of the project  
 $python manage.py syncdb  
 create super account  
+
+$crontab -e
+[edit mode]  
+(insert)  
+*/3 * * * * curl http://localhost:8000/corn  
+
 $python manage.py runserver [your ip:port]  
 
