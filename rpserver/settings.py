@@ -12,7 +12,7 @@ MANAGERS = ADMINS
 MYSQL_HOST = 'localhost'
 MYSQL_PORT = '3306'
 MYSQL_USER = 'root'
-MYSQL_PASS = 'admin'
+MYSQL_PASS = '903557'
 MYSQL_DB = 'raspberry'
 
 DATABASES = {
