@@ -1,5 +1,6 @@
 from server.models import CLASSROOM
 from django.http import HttpResponse
+from django.utils import simplejson
 import datetime
 # import pdb
 
@@ -22,3 +23,11 @@ def syn_time(request):
     time_command = "date --set " + current_time[pos+1:] + "\n"
     hard_command = "hwclock -w\n"
     return HttpResponse(date_command + time_command + hard_command)
+
+def all_classroom(request):
+    classrooms = CLASSROOM.objects.all()
+    result = dict()
+    for classroom in classrooms:
+        result[classroom.Name] = classroom.Num_of_device
+    return HttpResponse(simplejson.dumps(result, ensure_ascii=False))
+

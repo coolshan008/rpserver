@@ -23,6 +23,7 @@ urlpatterns = patterns(
     url(r'^cron/', 'server.update.cron'),  # update the devices in classroom
     url(r'^update/', 'server.update.update_signal'),  # upload devices
     url(r'^inquiry/', 'server.inquiry.one_classroom'),  # inquiry num in classroom
+    url(r'^situation/', 'server.inquiry.all_classroom'),  #inquiry classroom nums
     url(r'^classify/', 'server.classify.classify'),  # run classify
     url(r'^syn/', 'server.inquiry.syn_time'),
     # url(r'^time/', 'server.system.get_time'),
