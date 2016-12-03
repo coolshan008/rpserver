@@ -1,12 +1,15 @@
 import pickle
+import string
 import random
 import time
 from math import *
 
 
 trainingFile = open('training.sql', 'w')
+testingFile = open('testing.sql', 'w')
 APs = list()
 Devices = list()
+Macs = list()
 Depos = list()
 Heads = list()
 Tails = list()
@@ -19,10 +22,10 @@ deviceNum = 0
 positionID = 1  # table key, auto increase
 deviceID = 1  # table key, auto increase
 
-WALLFACTOR = 10
-UPLOADGAP = 240  # seconds
-HALFGAP = 120  # half of UPLOADGAP
-NOICEFACTOR = 4
+WALLFACTOR = 5
+UPLOADGAP = 300# seconds
+HALFGAP = 90# half of UPLOADGAP
+NOICEFACTOR = 3
 
 
 class Point:
@@ -33,8 +36,12 @@ class Point:
         self.y = yy
     def distance2(self, p2):
         a = self.x - p2.x
-        b = self.y = p2.y
-        return sqrt(hypot(a, b))
+        b = self.y - p2.y
+        re = sqrt(hypot(a, b))
+        #print (str(a) + ' '+ str(b ) + ' '+ str(re))
+        if re == 0:
+            return 1
+        return re
 
 
 def readPosition():
@@ -61,6 +68,7 @@ def readPosition():
         pos = (int(splits[0]), int(splits[1]))
         Devices.append(pos)
         Depos.append(int(splits[2]))
+        Macs.append(string.join(random.sample('1234567890abcdef:',16)).replace(" ",""))
 
 
 
@@ -99,12 +107,14 @@ def wallBlock():
                     WallsBet[(i,j)] = tmp
             # compute distance
             Distance[(i,j)] = cc.distance2(dd)
+            #print (str((i,j)) + ' ' + str(Distance[(i,j)]))
 
 def computeSsi():
     for i in range(0, classNum):
         for j in range(0, deviceNum):
             tup = (i,j)
             ssi = -30 - 30*log10( Distance[tup]) + 1/sqrt(8*pi)*exp(-pow(Distance[tup], 2)) - WALLFACTOR * WallsBet[tup];
+            #print (str(tup) + ': ' + str(ssi) )
             Ssi[tup] = int(ssi)
 
 
@@ -116,31 +126,59 @@ def generateTraining(k):
         currentT += UPLOADGAP
         for j in range(0, deviceNum):
             # insert to position
-            trainingFile.write('INSERT INTO trainer_position VALUES (' + str(positionID) + ',\"00:00:00:00:00:00\",' + str(currentT) + ',' + str(Depos[j]) + ',0);\n')
+            trainingFile.write('INSERT INTO trainer_position VALUES (' + str(positionID) + ',\"' + Macs[j] + '\",' + str(currentT) + ',' + str(Depos[j]) + ',0);\n')
             positionID += 1
             trainingFile.write('INSERT INTO trainer_device VALUES ')
             for i in range(0, classNum):
                 timeVar = random.randint(-HALFGAP, HALFGAP)
                 noice = random.randint(-NOICEFACTOR, NOICEFACTOR)
                 ssi = Ssi[(i,j)] + noice
-                if ssi < -150:
+                if ssi < -110:  # threshold can be modified
                     ssi = -150
                 upTime = currentT + timeVar
                 if i == classNum-1:
-                    trainingFile.write('(' + str(deviceID) + ', \"00:00:00:00:00:00\",' + str(ssi) + ',' + str(upTime) + ',' + str(i+1) + ');\n')
+                    trainingFile.write('(' + str(deviceID) + ', \"' + Macs[j] + '\",' + str(ssi) + ',' + str(upTime) + ',' + str(i) + ');\n')
                 else:
-                    trainingFile.write('(' + str(deviceID) + ', \"00:00:00:00:00:00\",' + str(ssi) + ',' + str(upTime) + ',' + str(i+1) + '),')
+                    trainingFile.write('(' + str(deviceID) + ', \"' + Macs[j] + '\",' + str(ssi) + ',' + str(upTime) + ',' + str(i) + '),')
                 deviceID += 1
+
+
+# is wrong with mac
+def generateTesting(k):
+    currentT = time.time()  # use for upload position
+    global positionID,deviceID
+    # random = random.randint(12,20)
+    for t in range(0, k):
+        currentT += UPLOADGAP
+        for j in range(0, deviceNum):
+            # insert to position
+            testingFile.write('INSERT INTO trainer_position VALUES (' + str(positionID) + ',\"00:00:00:00:00:00\",' + str(currentT) + ',' + str(Depos[j]) + ',0);\n')
+            positionID += 1
+            testingFile.write('INSERT INTO trainer_device VALUES ')
+            for i in range(0, classNum):
+                timeVar = random.randint(-HALFGAP, HALFGAP)
+                noice = random.randint(-NOICEFACTOR, NOICEFACTOR)
+                ssi = Ssi[(i,j)] + noice
+                if ssi < -100:  # threshold can be modified
+                    ssi = -150
+                elif WallsBet[(i,j)] >=4:
+                    ssi = -150
+                upTime = currentT + timeVar
+                if i == classNum-1:
+                    testingFile.write('(' + str(deviceID) + ', \"00:00:00:00:00:00\",' + str(ssi) + ',' + str(upTime) + ',' + str(i) + ');\n')
+                else:
+                    testingFile.write('(' + str(deviceID) + ', \"00:00:00:00:00:00\",' + str(ssi) + ',' + str(upTime) + ',' + str(i) + '),')
+                deviceID += 1
+
 
 
 def main():
     readPosition()
     wallBlock()
     computeSsi()
-    generateTraining(10)
+    generateTraining(5)
     #print WallsBet
-    #print Distance
-    #print Ssi
+    #generateTesting(1)
 
 
 if __name__ == "__main__":

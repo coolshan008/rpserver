@@ -10,6 +10,8 @@ output_file = open('test/output', 'a')
 
 
 def flash():
+    global output_file
+    output_file = open('test/output', 'a')
     output_file.write('\n\n')
 
 
@@ -40,7 +42,7 @@ def randomTest():
         delta = dict()
         vote = dict()
         ssi_array = pickle.loads(tp.Array)
-        debug(ssi_array)
+        debug(str(correct_no) + str(ssi_array))
         for i in range(0, gl.NUMBER_OF_PIS):
             vote[i] = 0.0
             for j in range(0, Ts[i].__len__()):

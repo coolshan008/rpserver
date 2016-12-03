@@ -6,10 +6,13 @@ import pdb
 import gl
 from django.http import HttpResponse
 
+#output_file = open('test/output', 'a')
 output_file = open('test/output', 'a')
 
 
 def flash():
+    global output_file
+    output_file = open('test/output', 'a')
     output_file.write('\n\n')
 
 
@@ -32,11 +35,12 @@ def getTuple():
     for no in classrooms:
         no_tuples = TUPLE.objects.filter(Correct_no=no.No)
         if no_tuples.__len__() < gl.NUMBER_OF_SAMPLES:
+            output_file.write("fail\n")
             return HttpResponse(str(no_tuples.__len__()) + " fail")
         for i in range(0, gl.NUMBER_OF_SAMPLES):
             ssi_array = pickle.loads(no_tuples[i].Array)  # get the samples Ssi array
             temp = dict()
-            debug("array = " + str(ssi_array))
+            # debug(str(no.No) + " array = " + str(ssi_array))
             for j in range(0, ssi_array.__len__() - 1):
                 for k in range(j + 1, ssi_array.__len__()):
                     temp[(j, k)] = ssi_array[j] - ssi_array[k]  # compute the margin feature between j and k

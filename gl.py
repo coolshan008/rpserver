@@ -28,10 +28,10 @@ THETAS = list()
 NUMBER_OF_PIS = 6
 
 # sample nums from each room
-NUMBER_OF_SAMPLES = 20
+NUMBER_OF_SAMPLES = 15
 
 # number of weak learner in each room
-NUMBER_OF_WEAK = 10
+NUMBER_OF_WEAK = 4
 
 # time
 time_to_live = 2
