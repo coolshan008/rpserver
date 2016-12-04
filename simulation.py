@@ -19,13 +19,13 @@ Ssi = dict()  # (classID, APid) ==> Ssi
 classNum = 0
 wallNum = 0
 deviceNum = 0
-positionID = 1  # table key, auto increase
+positionID = 1000  # table key, auto increase
 deviceID = 1  # table key, auto increase
 
 WALLFACTOR = 5
-UPLOADGAP = 300# seconds
+UPLOADGAP = 130# seconds
 HALFGAP = 90# half of UPLOADGAP
-NOICEFACTOR = 3
+NOICEFACTOR = 2
 
 
 class Point:
@@ -45,7 +45,8 @@ class Point:
 
 
 def readPosition():
-    file = open('pos.setting', 'r')
+    #file = open('pos.setting', 'r')
+    file = open('pos1.setting', 'r')
     global classNum, wallNum, deviceNum
     classNum = int(file.readline().strip())
     for i in range(0,classNum):
@@ -75,11 +76,34 @@ def readPosition():
 def determinant(v1, v2, v3, v4):
     return v1*v4 - v2*v3
 
+def max(a,b):
+    if a > b:
+        return a
+    return b
+
+def min(a,b):
+    if(a<b):
+        return a
+    return b
+
+def quickOut(P1, P2, Q1, Q2):
+    if min(P1.x, P2.x) <= max(Q1.x, Q2.x) and min(Q1.x, Q2.x)<=max(P1.x, P2.x)\
+       and min(P1.y, P2.y) <= max(Q1.y, Q2.y) and min(Q1.y, Q2.y) <= \
+       max(P1.y, P2.y):
+        return True
+    return False
+
+def isLineSegmentCross(P1, P2, Q1, Q2):
+    if ((Q1.x-P1.x)*(Q1.y-Q2.y)-(Q1.y-P1.y)*( Q1.x-Q2.x)) * ((Q1.x-P2.x)*(Q1.y-Q2.y)-(Q1.y-P2.y)*(Q1.x-Q2.x)) < 0 or ((P1.x-Q1.x)*(P1.y-P2.y)-(P1.y-Q1.y)*(P1.x-P2.x)) * ((P1.x-Q2.x)*(P1.y-P2.y)-(P1.y-Q2.y)*( P1.x-P2.x)) < 0: 
+        return True
+    else:
+        return False
+
 '''
     Judge sector(aa,bb) and sector(cc,dd) is interface
 '''
 def intersect3(aa, bb, cc, dd):
-    delta = determinant(bb.x - aa.x, cc.x- dd.x, bb.y - aa.y, cc.y - dd.y)
+    '''delta = determinant(bb.x - aa.x, cc.x- dd.x, bb.y - aa.y, cc.y - dd.y)
     if delta <= 1e-6 and delta >= -1e-6:
         return False
     nameda = determinant(cc.x - aa.x, cc.x - dd.x, cc.y - aa.y, cc.y - dd.y) / delta
@@ -88,10 +112,16 @@ def intersect3(aa, bb, cc, dd):
     miu = determinant(bb.x - aa.x, cc.x - aa.x, bb.y - aa.y, cc.y - aa.y) / delta
     if miu > 1 or miu < 0:
         return False
-    return True
+    return True'''
+    if quickOut(aa, bb, cc, dd):
+        if isLineSegmentCross(aa, bb, cc, dd):
+            return True
+    return False
 
+zeros = 0
 
 def wallBlock():
+    global zeros
     for i in range(0, classNum):
         cc = Point(APs[i][0], APs[i][1])
         for j in range(0, deviceNum):
@@ -106,6 +136,8 @@ def wallBlock():
                     tmp += 1
                     WallsBet[(i,j)] = tmp
             # compute distance
+            if WallsBet[(i,j)] == 0:
+                zeros += 1
             Distance[(i,j)] = cc.distance2(dd)
             #print (str((i,j)) + ' ' + str(Distance[(i,j)]))
 
@@ -113,7 +145,8 @@ def computeSsi():
     for i in range(0, classNum):
         for j in range(0, deviceNum):
             tup = (i,j)
-            ssi = -30 - 30*log10( Distance[tup]) + 1/sqrt(8*pi)*exp(-pow(Distance[tup], 2)) - WALLFACTOR * WallsBet[tup];
+            #ssi = -30 - 30*log10( Distance[tup]) + 1/sqrt(8*pi)*exp(-pow(Distance[tup], 2)) - WALLFACTOR * WallsBet[tup];
+            ssi = -35 - 35*log10( Distance[tup]) + 1/sqrt(8*pi)*exp(-pow(Distance[tup], 2)) - WALLFACTOR * WallsBet[tup];
             #print (str(tup) + ': ' + str(ssi) )
             Ssi[tup] = int(ssi)
 
@@ -130,7 +163,8 @@ def generateTraining(k):
             positionID += 1
             trainingFile.write('INSERT INTO trainer_device VALUES ')
             for i in range(0, classNum):
-                timeVar = random.randint(-HALFGAP, HALFGAP)
+                #timeVar = random.randint(-HALFGAP, HALFGAP)
+                timeVar = random.randint(-UPLOADGAP, 0)
                 noice = random.randint(-NOICEFACTOR, NOICEFACTOR)
                 ssi = Ssi[(i,j)] + noice
                 if ssi < -110:  # threshold can be modified
@@ -156,7 +190,8 @@ def generateTesting(k):
             positionID += 1
             testingFile.write('INSERT INTO trainer_device VALUES ')
             for i in range(0, classNum):
-                timeVar = random.randint(-HALFGAP, HALFGAP)
+                #timeVar = random.randint(-HALFGAP, HALFGAP)
+                timeVar = random.randint(-UPLOADGAP, 0)
                 noice = random.randint(-NOICEFACTOR, NOICEFACTOR)
                 ssi = Ssi[(i,j)] + noice
                 if ssi < -100:  # threshold can be modified
@@ -178,6 +213,7 @@ def main():
     computeSsi()
     generateTraining(5)
     #print WallsBet
+    #print zeros
     #generateTesting(1)
 
 

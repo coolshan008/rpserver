@@ -6,3 +6,6 @@
 
 model/
 
+test/output
+
+tuple.sql

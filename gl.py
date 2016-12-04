@@ -25,10 +25,10 @@ exist = set()
 THETAS = list()
 
 # number of pis
-NUMBER_OF_PIS = 6
+NUMBER_OF_PIS = 4
 
 # sample nums from each room
-NUMBER_OF_SAMPLES = 15
+NUMBER_OF_SAMPLES = 25
 
 # number of weak learner in each room
 NUMBER_OF_WEAK = 4

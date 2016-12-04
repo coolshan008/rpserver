@@ -1,0 +1,177 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ADMINS	rpserver/settings.py	/^ADMINS = ($/;"	v
+APs	simulation.py	/^APs = list()$/;"	v
+Array	server/models.py	/^    Array = models.CharField(max_length=1000)$/;"	v	class:TUPLE
+Array	trainer/models.py	/^    Array = models.CharField(max_length=1000)$/;"	v	class:TUPLE
+CLASSROOM	server/models.py	/^class CLASSROOM(models.Model):$/;"	c	inherits:models.Model
+CLASSROOM	trainer/models.py	/^class CLASSROOM(models.Model):$/;"	c	inherits:models.Model
+CLASSROOMAdmin	server/admin.py	/^class CLASSROOMAdmin(admin.ModelAdmin):$/;"	c	inherits:admin.ModelAdmin
+CORRECT	gl.py	/^CORRECT = list()$/;"	v
+Class_No	server/models.py	/^    Class_No = models.IntegerField()  # pi's position$/;"	v	class:SIGNAL
+Class_No	trainer/models.py	/^    Class_No = models.IntegerField()  # pi's position$/;"	v	class:DEVICE
+Correct_no	trainer/models.py	/^    Correct_no = models.IntegerField()$/;"	v	class:TUPLE
+DATA	gl.py	/^DATA = list()$/;"	v
+DATABASES	rpserver/settings.py	/^DATABASES = {$/;"	v
+DATA_SIZE	gl.py	/^DATA_SIZE = 0$/;"	v
+DEBUG	rpserver/settings.py	/^DEBUG = True$/;"	v
+DEVICE	server/models.py	/^class DEVICE(models.Model):$/;"	c	inherits:models.Model
+DEVICE	trainer/models.py	/^class DEVICE(models.Model):$/;"	c	inherits:models.Model
+DEVICEAdmin	server/admin.py	/^class DEVICEAdmin(admin.ModelAdmin):$/;"	c	inherits:admin.ModelAdmin
+DEVICEAdmin	trainer/admin.py	/^class DEVICEAdmin(admin.ModelAdmin):$/;"	c	inherits:admin.ModelAdmin
+DEVICEInline	server/admin.py	/^class DEVICEInline(admin.StackedInline):$/;"	c	inherits:admin.StackedInline
+DEVICEInline	trainer/admin.py	/^class DEVICEInline(admin.StackedInline):$/;"	c	inherits:admin.StackedInline
+DISTRIBUTION	gl.py	/^DISTRIBUTION = list()$/;"	v
+Depos	simulation.py	/^Depos = list()$/;"	v
+Devices	simulation.py	/^Devices = list()$/;"	v
+Distance	simulation.py	/^Distance = dict()  # (classID, APid) ==> distance between$/;"	v
+HALFGAP	simulation.py	/^HALFGAP = 90# half of UPLOADGAP$/;"	v
+Heads	simulation.py	/^Heads = list()$/;"	v
+IDs	gl.py	/^IDs = tuple()$/;"	v
+INSTALLED_APPS	rpserver/settings.py	/^INSTALLED_APPS = ($/;"	v
+LANGUAGE_CODE	rpserver/settings.py	/^LANGUAGE_CODE = 'en-us'$/;"	v
+LOGGING	rpserver/settings.py	/^LOGGING = {$/;"	v
+MANAGERS	rpserver/settings.py	/^MANAGERS = ADMINS$/;"	v
+MEDIA_ROOT	rpserver/settings.py	/^MEDIA_ROOT = ''$/;"	v
+MEDIA_URL	rpserver/settings.py	/^MEDIA_URL = ''$/;"	v
+MIDDLEWARE_CLASSES	rpserver/settings.py	/^MIDDLEWARE_CLASSES = ($/;"	v
+MYSQL_DB	rpserver/settings.py	/^MYSQL_DB = 'raspberry'$/;"	v
+MYSQL_HOST	rpserver/settings.py	/^MYSQL_HOST = 'localhost'$/;"	v
+MYSQL_PASS	rpserver/settings.py	/^MYSQL_PASS = '903557'$/;"	v
+MYSQL_PORT	rpserver/settings.py	/^MYSQL_PORT = '3306'$/;"	v
+MYSQL_USER	rpserver/settings.py	/^MYSQL_USER = 'root'$/;"	v
+Mac	server/models.py	/^    Mac = models.CharField(max_length=40)$/;"	v	class:DEVICE
+Mac	server/models.py	/^    Mac = models.CharField(max_length=40)$/;"	v	class:SIGNAL
+Mac	server/models.py	/^    Mac = models.CharField(max_length=40)$/;"	v	class:TUPLE
+Mac	trainer/models.py	/^    Mac = models.CharField(max_length=40)$/;"	v	class:DEVICE
+Mac	trainer/models.py	/^    Mac = models.CharField(max_length=40)$/;"	v	class:POSITION
+Mac	trainer/models.py	/^    Mac = models.CharField(max_length=40)$/;"	v	class:TUPLE
+Macs	simulation.py	/^Macs = list()$/;"	v
+NOICEFACTOR	simulation.py	/^NOICEFACTOR = 3$/;"	v
+NUMBER_OF_PIS	gl.py	/^NUMBER_OF_PIS = 6$/;"	v
+NUMBER_OF_SAMPLES	gl.py	/^NUMBER_OF_SAMPLES = 15$/;"	v
+NUMBER_OF_WEAK	gl.py	/^NUMBER_OF_WEAK = 4$/;"	v
+Name	server/models.py	/^    Name = models.CharField(max_length=20)$/;"	v	class:CLASSROOM
+No	server/models.py	/^    No = models.IntegerField()$/;"	v	class:CLASSROOM
+No	trainer/models.py	/^    No = models.IntegerField()$/;"	v	class:CLASSROOM
+No	trainer/models.py	/^    No = models.IntegerField()$/;"	v	class:POSITION
+Num_of_device	server/models.py	/^    Num_of_device = models.IntegerField()$/;"	v	class:CLASSROOM
+POSITION	trainer/models.py	/^class POSITION(models.Model):  # for android$/;"	c	inherits:models.Model
+POSITIONAdmin	trainer/admin.py	/^class POSITIONAdmin(admin.ModelAdmin):$/;"	c	inherits:admin.ModelAdmin
+Place	server/models.py	/^    Place = models.ForeignKey(CLASSROOM)$/;"	v	class:DEVICE
+Point	simulation.py	/^class Point:$/;"	c	inherits:
+ROOT_URLCONF	rpserver/settings.py	/^ROOT_URLCONF = 'rpserver.urls'$/;"	v
+SECRET_KEY	rpserver/settings.py	/^SECRET_KEY = '(xr+qzvxh98sw2_dd_s@l-x4%c-f+(hh5eya3y#vhn$2nn4a!l'$/;"	v
+SIGNAL	server/models.py	/^class SIGNAL(models.Model):$/;"	c	inherits:models.Model
+SITE_ID	rpserver/settings.py	/^SITE_ID = 1$/;"	v
+STATICFILES_DIRS	rpserver/settings.py	/^STATICFILES_DIRS = ($/;"	v
+STATICFILES_FINDERS	rpserver/settings.py	/^STATICFILES_FINDERS = ($/;"	v
+STATIC_ROOT	rpserver/settings.py	/^STATIC_ROOT = ''$/;"	v
+STATIC_URL	rpserver/settings.py	/^STATIC_URL = '\/static\/'$/;"	v
+SimpleTest	server/tests.py	/^class SimpleTest(TestCase):$/;"	c	inherits:TestCase
+Ssi	server/models.py	/^    Ssi = models.IntegerField()$/;"	v	class:SIGNAL
+Ssi	simulation.py	/^Ssi = dict()  # (classID, APid) ==> Ssi$/;"	v
+Ssi	trainer/models.py	/^    Ssi = models.IntegerField()$/;"	v	class:DEVICE
+TEMPLATE_DEBUG	rpserver/settings.py	/^TEMPLATE_DEBUG = DEBUG$/;"	v
+TEMPLATE_DIRS	rpserver/settings.py	/^TEMPLATE_DIRS = ($/;"	v
+TEMPLATE_LOADERS	rpserver/settings.py	/^TEMPLATE_LOADERS = ($/;"	v
+THETAS	gl.py	/^THETAS = list()$/;"	v
+TIME_ZONE	rpserver/settings.py	/^TIME_ZONE = ''$/;"	v
+TUPLE	server/models.py	/^class TUPLE(models.Model):$/;"	c	inherits:models.Model
+TUPLE	trainer/models.py	/^class TUPLE(models.Model):$/;"	c	inherits:models.Model
+TUPLEAdmin	trainer/admin.py	/^class TUPLEAdmin(admin.ModelAdmin):$/;"	c	inherits:admin.ModelAdmin
+Tails	simulation.py	/^Tails = list()$/;"	v
+Time	server/models.py	/^    Time = models.FloatField()$/;"	v	class:SIGNAL
+Time	trainer/models.py	/^    Time = models.FloatField()$/;"	v	class:DEVICE
+Time	trainer/models.py	/^    Time = models.FloatField()$/;"	v	class:POSITION
+Time	trainer/models.py	/^    Time = models.FloatField()$/;"	v	class:TUPLE
+Time_to_live	server/models.py	/^    Time_to_live = models.IntegerField()  # -1 to indicate that the device has not been classified$/;"	v	class:DEVICE
+UPLOADGAP	simulation.py	/^UPLOADGAP = 130# seconds$/;"	v
+USE_I18N	rpserver/settings.py	/^USE_I18N = True$/;"	v
+USE_L10N	rpserver/settings.py	/^USE_L10N = True$/;"	v
+USE_TZ	rpserver/settings.py	/^USE_TZ = True$/;"	v
+Used	trainer/models.py	/^    Used = models.BooleanField()$/;"	v	class:POSITION
+Used	trainer/models.py	/^    Used = models.BooleanField()$/;"	v	class:TUPLE
+WALLFACTOR	simulation.py	/^WALLFACTOR = 5$/;"	v
+WSGI_APPLICATION	rpserver/settings.py	/^WSGI_APPLICATION = 'rpserver.wsgi.application'$/;"	v
+WallsBet	simulation.py	/^WallsBet = dict()  # (classID, APid) ==> wallsNum$/;"	v
+__init__	simulation.py	/^    def __init__(self, xx, yy):$/;"	m	class:Point	access:public
+__unicode__	server/models.py	/^    def __unicode__(self):  # return Mac_Time$/;"	m	class:SIGNAL	file:	access:private
+__unicode__	server/models.py	/^    def __unicode__(self):$/;"	m	class:CLASSROOM	file:	access:private
+__unicode__	server/models.py	/^    def __unicode__(self):$/;"	m	class:DEVICE	file:	access:private
+__unicode__	server/models.py	/^    def __unicode__(self):$/;"	m	class:TUPLE	file:	access:private
+__unicode__	trainer/models.py	/^    def __unicode__(self):  # return Mac_Time$/;"	m	class:DEVICE	file:	access:private
+__unicode__	trainer/models.py	/^    def __unicode__(self):$/;"	m	class:CLASSROOM	file:	access:private
+__unicode__	trainer/models.py	/^    def __unicode__(self):$/;"	m	class:POSITION	file:	access:private
+__unicode__	trainer/models.py	/^    def __unicode__(self):$/;"	m	class:TUPLE	file:	access:private
+a	test.py	/^a = (1,2,5,3,4)$/;"	v
+all_classroom	server/inquiry.py	/^def all_classroom(request):$/;"	f	access:public
+application	rpserver/wsgi.py	/^application = get_wsgi_application()$/;"	v
+checkTuple	trainer/reorganize.py	/^def checkTuple():$/;"	f	access:public
+classNum	simulation.py	/^classNum = 0$/;"	v
+classify	server/classify.py	/^def classify(request):$/;"	f	access:public
+computeSsi	simulation.py	/^def computeSsi():$/;"	f	access:public
+cron	server/update.py	/^def cron(request):$/;"	f	access:public
+data	post.py	/^data=urllib.urlencode(values)$/;"	v
+debug	trainer/tests.py	/^def debug(obj):$/;"	f	access:public
+debug	trainer/train.py	/^def debug(obj):$/;"	f	access:public
+determinant	simulation.py	/^def determinant(v1, v2, v3, v4):$/;"	f	access:public
+deviceID	simulation.py	/^deviceID = 1  # table key, auto increase$/;"	v
+deviceNum	simulation.py	/^deviceNum = 0$/;"	v
+distance2	simulation.py	/^    def distance2(self, p2):$/;"	m	class:Point	access:public
+ensemble	trainer/train.py	/^def ensemble(no, writer):$/;"	f	access:public
+exist	gl.py	/^exist = set()$/;"	v
+extra	server/admin.py	/^    extra = 3$/;"	v	class:DEVICEInline
+extra	trainer/admin.py	/^    extra=3$/;"	v	class:DEVICEInline
+fields	server/admin.py	/^    fields = ['Mac', 'Place', 'Time_to_live']$/;"	v	class:DEVICEAdmin
+fields	server/admin.py	/^    fields = ['No', 'Num_of_device']$/;"	v	class:CLASSROOMAdmin
+fields	trainer/admin.py	/^    fields = ['Mac', 'Correct_no', 'Time', 'Array']$/;"	v	class:TUPLEAdmin
+fields	trainer/admin.py	/^    fields = ['Mac', 'Ssi', 'Time', 'Class_No']$/;"	v	class:DEVICEAdmin
+fields	trainer/admin.py	/^    fields=['Mac', 'Time', 'No']$/;"	v	class:POSITIONAdmin
+flash	trainer/tests.py	/^def flash():$/;"	f	access:public
+flash	trainer/train.py	/^def flash():$/;"	f	access:public
+generateTesting	simulation.py	/^def generateTesting(k):$/;"	f	access:public
+generateTraining	simulation.py	/^def generateTraining(k):$/;"	f	access:public
+getTuple	trainer/train.py	/^def getTuple():$/;"	f	access:public
+headers	post.py	/^headers = {'User-Agent':'Mozilla\/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko\/20091201 Firefox\/3.5.6'} $/;"	v
+inlines	server/admin.py	/^    inlines = [DEVICEInline]$/;"	v	class:CLASSROOMAdmin
+intersect3	simulation.py	/^def intersect3(aa, bb, cc, dd):$/;"	f	access:public
+main	simulation.py	/^def main():$/;"	f	access:public
+model	server/admin.py	/^    model = DEVICE$/;"	v	class:DEVICEInline
+model	trainer/admin.py	/^    model=DEVICE$/;"	v	class:DEVICEInline
+one_classroom	server/inquiry.py	/^def one_classroom(request):$/;"	f	access:public
+output_file	trainer/tests.py	/^output_file = open('test\/output', 'a')$/;"	v
+output_file	trainer/train.py	/^output_file = open('test\/output', 'a')$/;"	v
+positionID	simulation.py	/^positionID = 1  # table key, auto increase$/;"	v
+randomTest	trainer/tests.py	/^def randomTest():$/;"	f	access:public
+readPosition	simulation.py	/^def readPosition():$/;"	f	access:public
+reorganize	server/classify.py	/^def reorganize():  # reorganize the data to be computed conveniently and store them in table tuple$/;"	f	access:public
+reorganize	trainer/reorganize.py	/^def reorganize(request):  # reorganize the data to be computed conveniently and store them in table tuple$/;"	f	access:public
+req	get.py	/^req=urllib2.Request(url)$/;"	v
+req	post.py	/^req=urllib2.Request(url,data,headers)$/;"	v
+res	get.py	/^res=res_data.read()$/;"	v
+res_data	get.py	/^res_data=urllib2.urlopen(req)$/;"	v
+response	post.py	/^response=urllib2.urlopen(req)$/;"	v
+syn_time	server/inquiry.py	/^def syn_time(request):$/;"	f	access:public
+test	trainer/tests.py	/^def test(request):$/;"	f	access:public
+test_basic_addition	server/tests.py	/^    def test_basic_addition(self):$/;"	m	class:SimpleTest	access:public
+testingFile	simulation.py	/^testingFile = open('testing.sql', 'w')$/;"	v
+time_to_live	gl.py	/^time_to_live = 2$/;"	v
+train	trainer/train.py	/^def train(request):$/;"	f	access:public
+trainingFile	simulation.py	/^trainingFile = open('training.sql', 'w')$/;"	v
+training_process	trainer/train.py	/^def training_process():$/;"	f	access:public
+update_device	trainer/pi.py	/^def update_device(request):$/;"	f	access:public
+update_position	trainer/android.py	/^def update_position(request):$/;"	f	access:public
+update_signal	server/update.py	/^def update_signal(request):$/;"	f	access:public
+url	get.py	/^url="http:\/\/127.0.0.1:8000"$/;"	v
+url	post.py	/^url='http:\/\/127.0.0.1:8000\/update\/'$/;"	v
+urlpatterns	rpserver/urls.py	/^urlpatterns = patterns($/;"	v
+values	post.py	/^values={"no":2,"ssi":-100,"mac":"10:00:00:00:00:00","time":time.time()*1000}$/;"	v
+wallBlock	simulation.py	/^def wallBlock():$/;"	f	access:public
+wallNum	simulation.py	/^wallNum = 0$/;"	v
+x	simulation.py	/^    x = 0$/;"	v	class:Point
+y	simulation.py	/^    y = 0$/;"	v	class:Point

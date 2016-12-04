@@ -21,7 +21,8 @@ def reorganize(request):  # reorganize the data to be computed conveniently and 
 		array = list()
                 # ###########!!!!! the No of classroom start from 0
 		for i in range(0, NUMBER_OF_PIS):
-			devices = DEVICE.objects.filter(Mac=mac).filter(Class_No=i).filter(Time__gt=time - 180).filter(Time__lt=time + 180)
+			#devices = DEVICE.objects.filter(Mac=mac).filter(Class_No=i).filter(Time__gt=time - 180).filter(Time__lt=time + 180)
+			devices = DEVICE.objects.filter(Mac=mac).filter(Class_No=i).filter(Time__gt=time - 130).order_by('-Time')
 			# search for current data(Mac,Class_No,time in 180seconds)
 			if len(devices) != 0:
 				# pdb.set_trace()
